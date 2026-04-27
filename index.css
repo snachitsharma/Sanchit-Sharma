@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+* {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===============================
+   VIBRANT & VISIBLE BACKGROUND
+   =============================== */
+
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Vivid Mesh Gradients */
+.mesh-container {
+  position: absolute;
+  inset: 0;
+  filter: blur(60px); /* Reduced blur for more definition */
+  opacity: 0.8; /* Higher opacity for visibility */
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  animation: nebula-drift 15s ease-in-out infinite;
+}
+
+/* Popping Colors */
+.blob-1 {
+  width: 80vw;
+  height: 80vh;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.5) 0%, transparent 70%); /* Bright Blue */
+}
+
+.blob-2 {
+  width: 70vw;
+  height: 70vh;
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 70%); /* Bright Orange */
+  animation-delay: -7s;
+}
+
+.blob-3 {
+  width: 60vw;
+  height: 60vh;
+  top: 20%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%); /* Bright Purple */
+  animation-delay: -3s;
+}
+
+.blob-4 {
+  width: 50vw;
+  height: 50vh;
+  bottom: 20%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%); /* Cyan */
+  animation-delay: -11s;
+}
+
+@keyframes nebula-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10%, 10%) scale(1.2); }
+  66% { transform: translate(-10%, -5%) scale(0.8); }
+}
+
+/* Texture & Details */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Floating Stars */
+.sparkles {
+  position: absolute;
+  inset: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ===============================
+   SECTIONS - GLASSMORPHISM
+   =============================== */
+
+section {
+  position: relative;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3) !important; /* Very light tint to see background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav, footer {
+  position: relative;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+}
+
+/* ===============================
+   NEON BUTTONS - ORIGINAL REVOLVING
+   =============================== */
+
+@keyframes neon-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.neon-button {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa, #3b82f6, #2563eb);
+  background-size: 300% 100%;
+  animation: neon-rotate 3s linear infinite;
+  z-index: -2;
+  border-radius: inherit;
+}
+
+.neon-button::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #2563eb;
+  z-index: -1;
+  border-radius: inherit;
+  transition: background 0.3s ease;
+}
+
+.neon-button:hover::after {
+  background: #1d4ed8;
+}
+
+/* Orange neon variant */
+.neon-button-orange::before {
+  background: linear-gradient(90deg, #f97316, #fb923c, #fdba74, #fb923c, #f97316);
+  background-size: 300% 100%;
+}
+
+.neon-button-orange::after {
+  background: #f97316;
+}
+
+.neon-button-orange:hover::after {
+  background: #ea580c;
+}
+
+/* ===============================
+   INTERACTIVE ELEMENTS
+   =============================== */
+
+.interactive-card {
+  position: relative;
+  background: rgba(15, 15, 25, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.interactive-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.2);
+}
+
+/* Book a call neon border */
+.book-call-section {
+  position: relative;
+  z-index: 1;
+}
+
+.book-call-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #2563eb, #f97316, #2563eb, #f97316, #2563eb);
+  background-size: 300% 100%;
+  animation: neon-rotate 4s linear infinite;
+  border-radius: 1.5rem;
+  padding: 3px;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
